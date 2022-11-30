@@ -27,10 +27,10 @@ Route::get('reset-password', [NewPasswordController::class, 'resetPassword']);
 
 // articles
 Route::get('articles', [ArticleController::class, 'list']);
-Route::get('articles/{author}', [ArticleController::class, 'index']);
+Route::get('authorarticles', [ArticleController::class, 'index'])->middleware('auth:sanctum');
 Route::get('article/{article}', [ArticleController::class, 'show']);
-Route::post('article/{article}', [ArticleController::class, 'update']);
-Route::delete('article/{id}', [ArticleController::class, 'delete']);
-Route::post('createarticle/{author}', [ArticleController::class, 'create']);
+Route::post('article/{id}', [ArticleController::class, 'update'])->middleware('auth:sanctum');
+Route::delete('article/{id}', [ArticleController::class, 'delete'])->middleware('auth:sanctum');
+Route::post('createarticle', [ArticleController::class, 'create'])->middleware('auth:sanctum');
 
 

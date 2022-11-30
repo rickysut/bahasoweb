@@ -7,74 +7,111 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 
 class ArticleController extends Controller
 {
     
     public function list()
     {
-        return  Array(
-            'message' => '200',
-            'data' => Article::with('author')->select()->get(),
+        return  response()->json([
+            'message' => 'Article list',
+            'data' => Article::with('author')->select()->get()],
+            200
         );     
     }
 
-    public function index(User $author)
+    public function index()
     {
-        return  Array(
-            'message' => '200',
-            'data' => Article::with('author')->where('user_id', $author->id)->select()->get(),
-        ); 
+        $author = Auth::user();
+        if ($author){
+            return  response()->json([
+                'message' => '200',
+                'data' => Article::with('author')->where('user_id', $author->id)->select()->get()],
+                200
+            ); 
+        } else return response()->json([
+            'message' => 'Unauthorized'
+        ], 401);
     }
 
     
-    public function create(Request $request, $authorId)
+    public function create(Request $request)
     {
-        $author=User::find($authorId);
-        if ($author){
+        
+        if (Auth::user()->role == 'author'){
             $article = Article::create($request->all());
 
-            return  Array(
-                'message' => '200',
-                'data' => $article->load([])->where('id', $article->id)->with('author')->get(),
+            return  response()->json([
+                'message' => 'Article Created',
+                'data' => $article->load([])->where('id', $article->id)->with('author')->get()],
+                200
             ); 
-        } else return Array(
-            'message' => '404',); // author not found
+        } else return response()->json([
+            'message' => 'Unauthorized'
+        ], 401);
     }
 
     
-    public function show(Article $article)
+    public function show($id)
     {
-        return  Array(
-            'message' => '200',
-            'data' => $article->load([])->where('id', $article->id)->with('author')->get(),
-        ); 
+        $article=Article::find($id);
+        if ($article){
+            return  response()->json([
+                'message' => 'Article show',
+                'data' => $article->load([])->where('id', $article->id)->with('author')->get()],
+                200
+            ); 
+        } else return response()->json([
+            'message' => 'Article not found'
+        ], 404);
+        
     }
 
     
     
-    public function update(Request $request,  Article $article)
+    public function update(Request $request,  $articleId)
     {
-        $article->update($request->only('title','body','picture'));
+        if (Auth::user()->role == 'author'){
+            $article = Article::find($articleId);
+            if ($article){
+                $article->update($request->only('title','body','picture'));
 
-        return Array(
-            'message' => '200',
-            'data' => $article->load([])->where('id', $article->id)->with('author')->get(),
-        );
+                return response()->json([
+                    'message' => 'Article updated',
+                    'data' => $article->load([])->where('id', $article->id)->with('author')->get()], 
+                    200
+                );
+            } else {
+                return response()->json([
+                    'message' => 'Article not found'
+                ], 404);
+            }
+        } else return response()->json([
+                        'message' => 'Unauthorized'
+                    ], 401);
+        
     }
 
     
     public function delete($id)
     {
-        $data=Article::find($id);
-        if ($data){
-            $data->delete();
-            return Array(
-                'message' => '200',
+        if (Auth::user()->role == 'author'){
+            $article=Article::find($id);
+            if ($article){
+                $article->delete();
+                return response()->json([
+                    'message' => 'Article deleted'
+                ], 200);
                 
-            );
+            } else {
+                return response()->json([
+                    'message' => 'Article not found'
+                ], 404);
+            }
         }
-        else return Array(
-            'message' => '204',);
+        else return response()->json([
+                        'message' => 'Unauthorized'
+                    ], 401);
     }
 }
