@@ -6,6 +6,7 @@ use App\Models\Article;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 
@@ -40,7 +41,22 @@ class ArticleController extends Controller
     {
         
         if (Auth::user()->role == 'author'){
-            $article = Article::create($request->all());
+
+            $regdata = [
+                'title'         => $request->title,
+                'body'          => $request->body,
+                'user_id'       => Auth::user()->id,
+            ];
+            $pic_path = '';
+            if  ($request->picture !=null){
+                $articleid = Carbon::now()->format('dmYHis');
+                $file_name = 'article'.$articleid.'.'.$request->picture->getClientOriginalExtension();
+                $file_path = $request->picture->storeAs('uploads', $file_name, 'public');
+                $pic_path = $file_path;
+                $regdata += array('picture' => $pic_path);
+            };
+
+            $article = Article::create($regdata);
 
             return  response()->json([
                 'message' => 'Article Created',
@@ -75,7 +91,19 @@ class ArticleController extends Controller
         if (Auth::user()->role == 'author'){
             $article = Article::find($articleId);
             if ($article){
-                $article->update($request->only('title','body','picture'));
+                $regdata = [
+                    'title'         => $request->title,
+                    'body'          => $request->body,
+                ];
+                $pic_path = '';
+                if  ($request->picture !=null){
+                    $articleid = Carbon::now()->format('dmYHis');
+                    $file_name = 'article'.$articleid.'.'.$request->picture->getClientOriginalExtension();
+                    $file_path = $request->picture->storeAs('uploads', $file_name, 'public');
+                    $pic_path = $file_path;
+                    $regdata += array('picture' => $pic_path);
+                };
+                $article->update($regdata);
 
                 return response()->json([
                     'message' => 'Article updated',
