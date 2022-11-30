@@ -1,0 +1,225 @@
+{
+	"info": {
+		"_postman_id": "7122779e-f73c-4c15-8f52-4eecdd39b109",
+		"name": "API Articles",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11720178"
+	},
+	"item": [
+		{
+			"name": "articles list all",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://bahasoweb.test/api/articles",
+					"protocol": "http",
+					"host": [
+						"bahasoweb",
+						"test"
+					],
+					"path": [
+						"api",
+						"articles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "articles list base on author",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "24|5ZMzTb0EyVDmuV9aj2EKPy6SNlxthebIKq52NSq5",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://bahasoweb.test/api/authorarticles",
+					"protocol": "http",
+					"host": [
+						"bahasoweb",
+						"test"
+					],
+					"path": [
+						"api",
+						"authorarticles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "article query",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://bahasoweb.test/api/article/1",
+					"protocol": "http",
+					"host": [
+						"bahasoweb",
+						"test"
+					],
+					"path": [
+						"api",
+						"article",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "article update",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "24|5ZMzTb0EyVDmuV9aj2EKPy6SNlxthebIKq52NSq5",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "Percobaan 3",
+							"type": "text"
+						},
+						{
+							"key": "body",
+							"value": "ini isi body untuk percobaan 3",
+							"type": "text"
+						},
+						{
+							"key": "picture",
+							"type": "file",
+							"src": "/Users/rickysutanto/Pictures/logo-tutwurihandayani.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://bahasoweb.test/api/article/4",
+					"protocol": "http",
+					"host": [
+						"bahasoweb",
+						"test"
+					],
+					"path": [
+						"api",
+						"article",
+						"4"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "article delete",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "24|5ZMzTb0EyVDmuV9aj2EKPy6SNlxthebIKq52NSq5",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://bahasoweb.test/api/article/4",
+					"protocol": "http",
+					"host": [
+						"bahasoweb",
+						"test"
+					],
+					"path": [
+						"api",
+						"article",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "article create new",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "24|5ZMzTb0EyVDmuV9aj2EKPy6SNlxthebIKq52NSq5",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "artikel dari api dadsad",
+							"type": "text"
+						},
+						{
+							"key": "body",
+							"value": "body artikel dari hasil create sadasad",
+							"type": "text"
+						},
+						{
+							"key": "user_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "picture",
+							"type": "file",
+							"src": "/Users/rickysutanto/Pictures/logo-tutwurihandayani.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://bahasoweb.test/api/createarticle",
+					"protocol": "http",
+					"host": [
+						"bahasoweb",
+						"test"
+					],
+					"path": [
+						"api",
+						"createarticle"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

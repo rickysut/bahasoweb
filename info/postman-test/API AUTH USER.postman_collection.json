@@ -1,0 +1,306 @@
+{
+	"info": {
+		"_postman_id": "4d448a62-6f72-408e-8264-421871f92528",
+		"name": "API AUTH USER",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11720178"
+	},
+	"item": [
+		{
+			"name": "logout",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "22|SjjQNUTo9du9x8zWLvABlO0qaZS7APh6XkyOfM5k",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json ",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "17|KizdUUdNJsTwY5BCSGbdQgLNROrPyhiF6XBP4CVU",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://bahasoweb.test/api/logout",
+					"protocol": "http",
+					"host": [
+						"bahasoweb",
+						"test"
+					],
+					"path": [
+						"api",
+						"logout"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "password",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json ",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "17|KizdUUdNJsTwY5BCSGbdQgLNROrPyhiF6XBP4CVU",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "admin@admin.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://bahasoweb.test/api/login",
+					"protocol": "http",
+					"host": [
+						"bahasoweb",
+						"test"
+					],
+					"path": [
+						"api",
+						"login"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "password",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "forgot-password",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json ",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "17|KizdUUdNJsTwY5BCSGbdQgLNROrPyhiF6XBP4CVU",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "dina3@email.com",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://bahasoweb.test/api/forgot-password",
+					"protocol": "http",
+					"host": [
+						"bahasoweb",
+						"test"
+					],
+					"path": [
+						"api",
+						"forgot-password"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "password",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "register",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json ",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "17|KizdUUdNJsTwY5BCSGbdQgLNROrPyhiF6XBP4CVU",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "dina3@email.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "role",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "avatar",
+							"type": "file",
+							"src": "/Users/rickysutanto/Pictures/ricky1.jpeg"
+						},
+						{
+							"key": "name",
+							"value": "dina2",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://bahasoweb.test/api/register",
+					"protocol": "http",
+					"host": [
+						"bahasoweb",
+						"test"
+					],
+					"path": [
+						"api",
+						"register"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "password",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "reset-password",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json ",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "17|KizdUUdNJsTwY5BCSGbdQgLNROrPyhiF6XBP4CVU",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://bahasoweb.test/api/reset-password?email=dina3@email.com&token=be677d663dc855abc9fa08f1539daf693c0dc6375ca98fae624e123c1d03b66a&password=abc123d4&password_confirmation=abc123d4",
+					"protocol": "http",
+					"host": [
+						"bahasoweb",
+						"test"
+					],
+					"path": [
+						"api",
+						"reset-password"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "dina3@email.com"
+						},
+						{
+							"key": "token",
+							"value": "be677d663dc855abc9fa08f1539daf693c0dc6375ca98fae624e123c1d03b66a"
+						},
+						{
+							"key": "password",
+							"value": "abc123d4"
+						},
+						{
+							"key": "password_confirmation",
+							"value": "abc123d4"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
