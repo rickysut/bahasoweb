@@ -14,6 +14,9 @@ use Illuminate\Validation\ValidationException;
 
 class NewPasswordController extends Controller
 {
+    //
+    // Perlu ubah vendor/laravel/framework/src/Illuminate/Auth/Passwords/PasswordBroker.php
+    // 
     public function forgotPassword(Request $request)
     {
         $request->validate([
@@ -24,13 +27,8 @@ class NewPasswordController extends Controller
             $request->only('email')
         );
 
-        //if ($status == Password::RESET_LINK_SENT) {
-            return $status;
-        //}
-
-        throw ValidationException::withMessages([
-            'email' => [trans($status)],
-        ]);
+        
+        return $status;
     }
 
     public function resetPassword(Request $request)

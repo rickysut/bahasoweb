@@ -40,6 +40,7 @@ class AuthController extends Controller
         $user->save();
         $token = $user->createToken('auth_token')->plainTextToken;
         return response()->json([
+            'message' => 'Register success',
             'data' => $user,
             'access_token' => $token,
             'token_type' => 'Bearer'
@@ -57,6 +58,7 @@ class AuthController extends Controller
         $token = $user->createToken('auth_token')->plainTextToken;
         return response()->json([
             'message' => 'Login success',
+            'data' => $user,
             'access_token' => $token,
             'token_type' => 'Bearer'
             ]);
@@ -66,7 +68,7 @@ class AuthController extends Controller
     {
         Auth::user()->tokens()->delete();
         return response()->json([
-            'message' => 'logout success'
+            'message' => 'Logout success'
         ]);
     }
 }
