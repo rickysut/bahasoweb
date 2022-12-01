@@ -108,12 +108,12 @@
 						{
 							"key": "picture",
 							"type": "file",
-							"src": "/Users/rickysutanto/Pictures/logo-tutwurihandayani.png"
+							"src": "/Users/rickysutanto/Pictures/mac-with-hc.jpeg"
 						}
 					]
 				},
 				"url": {
-					"raw": "http://bahasoweb.test/api/article/4",
+					"raw": "http://bahasoweb.test/api/article/9",
 					"protocol": "http",
 					"host": [
 						"bahasoweb",
@@ -122,7 +122,7 @@
 					"path": [
 						"api",
 						"article",
-						"4"
+						"9"
 					],
 					"query": [
 						{
@@ -186,23 +186,18 @@
 					"formdata": [
 						{
 							"key": "title",
-							"value": "artikel dari api dadsad",
+							"value": "artikel dari api metode baru",
 							"type": "text"
 						},
 						{
 							"key": "body",
-							"value": "body artikel dari hasil create sadasad",
-							"type": "text"
-						},
-						{
-							"key": "user_id",
-							"value": "1",
+							"value": "body artikel dari hasil create dengan picture public",
 							"type": "text"
 						},
 						{
 							"key": "picture",
 							"type": "file",
-							"src": "/Users/rickysutanto/Pictures/logo-tutwurihandayani.png"
+							"src": "/Users/rickysutanto/Pictures/poe.png"
 						}
 					]
 				},
